@@ -52,6 +52,7 @@
  */
 
 #include <stdio.h>
+#define __USE_GNU
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -63,7 +64,7 @@
 #include <sys/mman.h>
 #include <execinfo.h>
 
-#define __USE_GNU
+
 #include <ucontext.h>
 
 #include "trace.h"
@@ -141,6 +142,7 @@ void show_registers(ucontext_t *uc)
         uint32_t rax, rbx, rcx, rdx, rsi, rdi;
         uint32_t rip;
 
+		/*
         eax = uc->uc_mcontext.gregs[REG_EAX];
         ebx = uc->uc_mcontext.gregs[REG_EBX];
         ecx = uc->uc_mcontext.gregs[REG_ECX];
@@ -148,11 +150,19 @@ void show_registers(ucontext_t *uc)
         esi = uc->uc_mcontext.gregs[REG_ESI];
         edi = uc->uc_mcontext.gregs[REG_EDI];
         eip = uc->uc_mcontext.gregs[REG_EIP];
+		*/
+        rax = uc->uc_mcontext.gregs[REG_EAX];
+        rbx = uc->uc_mcontext.gregs[REG_EBX];
+        rcx = uc->uc_mcontext.gregs[REG_ECX];
+        rdx = uc->uc_mcontext.gregs[REG_EDX];
+        rsi = uc->uc_mcontext.gregs[REG_ESI];
+        rdi = uc->uc_mcontext.gregs[REG_EDI];
+        rip = uc->uc_mcontext.gregs[REG_EIP];
 
         printf("Registers:\n");
         printf("EIP: 0x%08x\n\n", eip);
         printf("eax = 0x%08x, ebx = 0x%08x, ecx = 0x%08x, edx = 0x%08x\n"
-                        "esi = 0x%08x, edi = 0x%08x\n"
+			   "esi = 0x%08x, edi = 0x%08x\n",
                         rax, rbx, rcx, rdx, rsi, rdi);
 }
 #endif

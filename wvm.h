@@ -10,7 +10,8 @@
 #define JVM_VERSION						0.03
 #define JVM_BANNER						"(c) wzt 2012,2013,2014"
 
-#define JVM_LOG_PATH						"/tmp/wvm"
+//#define JVM_LOG_PATH						"/tmp/wvm"
+#define JVM_LOG_PATH						"./wvmlog"
 #define JVM_LOG_LEVEL						5
 #define JVM_LOG_NUM						64
 #define JVM_LOG_SIZE						512		// MB bytes.

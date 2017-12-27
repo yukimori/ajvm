@@ -199,10 +199,11 @@ int main(int argc, char **argv)
 		}
 	}
 
+	/*
         if (log_init(jvm_arg->log_path, jvm_arg->log_level,
 			jvm_arg->log_size, jvm_arg->log_num) == -1)
                 return -1;
-
+	*/
         if (calltrace_init() == -1) {
 		log_destroy();
 		return -1;

@@ -114,7 +114,7 @@ int log_init(char *log_path, int log_level, int log_size, int log_num)
         pthread_mutex_init(&log_arg->log_lock, NULL);
 
         if (mkdir(log_arg->log_path, 0700) == -1) {
-                perror("mkdir");
+                perror("log.c:mkdir");
                 free(log_arg);
                 return -1;
         }
@@ -196,7 +196,8 @@ void do_debug(LOG_LEVEL log_level, char *file_name, char *function,
         char tmp[1024];
         char buf[4096];
 
-        assert(log_arg->log_level != LOG_NOLEVEL);
+		printf("log_level:%d",log_arg->log_level) ;
+		assert(log_arg->log_level != LOG_NOLEVEL);
         if (log_level > log_arg->log_level)
                 return ;
 
